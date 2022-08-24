@@ -10,7 +10,6 @@ let user = {
     title: 'Mr.',
 }
 
-const { async } = require("rxjs");
 
 Feature('store');
 
@@ -22,7 +21,6 @@ authPage.clickCreateAccount();
 createAccountPage.fillNewAccountFields(user);
 createAccountPage.clickRegister();
 I.see('MY ACCOUNT');
-pause();
 /*I.click('Sign In');
 I.click ({xpath:"//div[@class='header_user_info']/a"});
 // pause();

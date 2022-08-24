@@ -1,10 +1,10 @@
 const { I } = inject();
 
 module.exports = {
-  SignInButton: ({xpath:"//div[@class='header_user_info']/a"}),
+  signInButton: {xpath:"//div[@class='header_user_info']/a"},
   
   clickSignIn() {
-    I.click(this.SignInButton);
+    I.click(this.signInButton);
   }
 
   // insert your locators and methods here

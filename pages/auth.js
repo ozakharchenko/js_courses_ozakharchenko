@@ -1,8 +1,8 @@
 const { I } = inject();
 
 module.exports = {
-  emailInput: ({xpath:"//input[@id='email_create']"}),
-  createAccountButton: ({xpath:"//button[@id='SubmitCreate']"}),
+  emailInput: {xpath:"//input[@id='email_create']"},
+  createAccountButton: {xpath:"//button[@id='SubmitCreate']"},
 
   fillEmailField(email) {
     I.waitForVisible(this.emailInput);
