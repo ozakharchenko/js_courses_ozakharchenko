@@ -1,12 +1,10 @@
 const { I } = inject();
 
 module.exports = {
-  accountField: {xpath:"//div[@id='center_column']/h1"},
-  
   
   myAccountField() {
-    I.waitForVisible(this.accountField);
-    I.see(this.accountField);
+    I.waitForText('MY ACCOUNT');
+    I.see('MY ACCOUNT');
   }
 
   // insert your locators and methods here

@@ -26,6 +26,8 @@ exports.config = {
     authPage: './pages/auth.js',
     createAccountPage: './pages/createAccount.js',
     myAccountPage: './pages/myAccount.js',
+    productPage: './pages/product.js',
+    cartPage: './pages/cart.js',
   },
   name: 'js_courses_ozakharchenko'
 }
