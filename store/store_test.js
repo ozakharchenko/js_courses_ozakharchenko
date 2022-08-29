@@ -1,4 +1,5 @@
 const myAccount = require("../pages/myAccount");
+const assert = require('assert');
 
 let user = {
     firstName: 'Oleg',
@@ -36,13 +37,24 @@ Scenario('buy product', async ({ I, homePage, authPage, myAccountPage, productPa
     I.amOnPage('http://automationpractice.com/index.php?id_product=2&controller=product');
     let productPrice = await productPage.getProductPrice();
     console.log(productPrice);
-    // let productPriceNum = Number(productPrice);
-    // console.log(productPriceNum);
+    let numberProductPrice = productPrice.slice(1);
     productPage.clickAddToCart();
-    let shippingPrice = await productPage.getShippingPrice();
+    let shippingPrice = await cartPage.getShippingPrice();
     console.log(shippingPrice);
+    let numberShippingPrice = shippingPrice.slice(1);
+    numberProductPrice = Number(numberProductPrice);
+    numberShippingPrice = Number(numberShippingPrice);
+    let numberTotalPrice = (numberProductPrice + numberShippingPrice);
+    numberTotalPrice = Number(numberTotalPrice);
+    console.log(numberTotalPrice);
     cartPage.proceedToCheckout();
-    // I.assertEqual('productPrice', 'shippingPrice', 'Prices are not in match');
+    let amountPrice = await cartPage.getAmountPrice();
+    console.log(amountPrice);
+    let numberAmountPrice = amountPrice.slice(1);
+    console.log(numberAmountPrice);
+    numberAmountPrice = Number(numberAmountPrice);
+    console.log(numberAmountPrice);
+    // I.assertEqual(numberTotalPrice, numberAmountPrice, 'Prices are not in match');
 
 
 

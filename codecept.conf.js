@@ -15,9 +15,12 @@ exports.config = {
       url: 'http://localhost',
       show: true,
       browser: 'chromium',
-      timeout: 20000,
-      waitForTimeout: 10000,
+      timeout: 25000,
+      waitForTimeout: 15000,
       waitForNavigation: 'networkidle'
+    },
+    "ChaiWrapper": {
+      require: "codeceptjs-chai"
     }
   },
   include: {

@@ -7,6 +7,20 @@ module.exports = {
   shippingProceedToCheckoutButton: { xpath: "//button[@name='processCarrier']" },
   payByBankwireButton: { xpath: "//a[@class='bankwire']" },
   confirmMyOrderButton: { xpath: "//p[@class='cart_navigation clearfix']//button[@type='submit']" },
+  shippingPrice: { xpath: "//span[@class='ajax_cart_shipping_cost']" },
+  amountPrice: { xpath: "//span[@class='price']" },
+
+
+
+  async getShippingPrice() {
+    return await I.grabTextFrom(this.shippingPrice)
+
+  },
+
+  async getAmountPrice() {
+    return await I.grabTextFrom(this.amountPrice)
+
+  },
 
 
   clickProceedToCheckout() {
