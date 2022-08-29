@@ -8,7 +8,8 @@ module.exports = {
   payByBankwireButton: { xpath: "//a[@class='bankwire']" },
   confirmMyOrderButton: { xpath: "//p[@class='cart_navigation clearfix']//button[@type='submit']" },
   shippingPrice: { xpath: "//span[@class='ajax_cart_shipping_cost']" },
-  amountPrice: { xpath: "//span[@class='price']" },
+  totalAmount: { xpath: "//span[@class='ajax_block_cart_total']" },
+  // amountPrice: { xpath: "//span[@class='price']" },
 
 
 
@@ -17,10 +18,21 @@ module.exports = {
 
   },
 
-  async getAmountPrice() {
-    return await I.grabTextFrom(this.amountPrice)
+  async getTotalAmount() {
+    return await I.grabTextFrom(this.totalAmount)
 
   },
+
+  /*async getAmountPrice() {
+    return await I.grabTextFrom(this.amountPrice)
+    let amountPrice = await cartPage.getAmountPrice();
+    console.log(amountPrice);
+    let numberAmountPrice = amountPrice.slice(1);
+    console.log(numberAmountPrice);
+    numberAmountPrice = Number(numberAmountPrice);
+    console.log(numberAmountPrice);
+
+  },*/
 
 
   clickProceedToCheckout() {

@@ -47,14 +47,12 @@ Scenario('buy product', async ({ I, homePage, authPage, myAccountPage, productPa
     let numberTotalPrice = (numberProductPrice + numberShippingPrice);
     numberTotalPrice = Number(numberTotalPrice);
     console.log(numberTotalPrice);
+    let totalAmount = await cartPage.getTotalAmount();
+    let numberTotalAmount = totalAmount.slice(1);
+    numberTotalAmount = Number(numberTotalAmount);
+    console.log(numberTotalAmount);
     cartPage.proceedToCheckout();
-    let amountPrice = await cartPage.getAmountPrice();
-    console.log(amountPrice);
-    let numberAmountPrice = amountPrice.slice(1);
-    console.log(numberAmountPrice);
-    numberAmountPrice = Number(numberAmountPrice);
-    console.log(numberAmountPrice);
-    // I.assertEqual(numberTotalPrice, numberAmountPrice, 'Prices are not in match');
+    I.assertEqual(numberTotalPrice, numberTotalAmount, 'Prices are not in match');
 
 
 
