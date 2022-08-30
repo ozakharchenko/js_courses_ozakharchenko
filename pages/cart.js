@@ -14,12 +14,17 @@ module.exports = {
 
 
   async getShippingPrice() {
-    return await I.grabTextFrom(this.shippingPrice)
+    let shippingPrice = await I.grabTextFrom(this.shippingPrice)
+    let numberShippingPrice = shippingPrice.slice(1);
+    return Number(numberShippingPrice);
 
   },
 
+
   async getTotalAmount() {
-    return await I.grabTextFrom(this.totalAmount)
+    let totalAmount = await I.grabTextFrom(this.totalAmount);
+    let numberTotalAmount = totalAmount.slice(1);
+    return Number(numberTotalAmount);
 
   },
 
@@ -49,7 +54,7 @@ module.exports = {
 
   clickAddressesProceedToCheckout() {
     I.click(this.addressesProceedToCheckoutButton);
-    I.waitForText
+    I.waitForText('SHIPPING');
     I.see('SHIPPING');
   },
 

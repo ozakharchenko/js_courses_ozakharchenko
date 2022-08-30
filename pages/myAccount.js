@@ -2,7 +2,7 @@ const { I } = inject();
 
 module.exports = {
   
-  myAccountField() {
+  getMyAccountField() {
     I.waitForText('MY ACCOUNT');
     I.see('MY ACCOUNT');
   }

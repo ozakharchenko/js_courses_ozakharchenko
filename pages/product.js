@@ -1,6 +1,5 @@
 const { I } = inject();
-// let productPrice = productPage.getProductPrice();
-// let numberProductPrice = productPrice.slice(1);
+
 
 
 module.exports = {
@@ -9,25 +8,11 @@ module.exports = {
 
 
 
-
   async getProductPrice() {
-    return await I.grabTextFrom(this.productPrice);
-    // function extractCurrencyValue(numberProductPrice) {
-        // return +numberProductPrice.slice(1);
-        // console.log(numberProductPrice);
-  // }
+    let productPrice = await I.grabTextFrom(this.productPrice);
+    let numberProductPrice = productPrice.slice(1);
+    return Number(numberProductPrice);
 
-
-    // insert your locators and methods here
-  },
-
-
-  async getTotalPrice() {
-    return (this.productPrice + this.shippingPrice);
-  },
-
-  extractCurrencyValue(productPrice) {
-    productPrice.splice(1);
   },
 
 
@@ -39,3 +24,6 @@ module.exports = {
 
 }
 
+// function extractCurrencyValue(numberProductPrice) {
+  // return +numberProductPrice.slice(1);
+  // console.log(numberProductPrice);

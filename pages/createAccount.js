@@ -41,3 +41,9 @@ module.exports = {
 
   // insert your locators and methods here
 
+/*Scenario('grab', async ({ I }) => {
+    I.amOnPage('http://automationpractice.com/index.php?id_product=1&controller=product');
+    let price = await I.grabTextFrom ({xpath:"//span[@id='our_price_display']"});
+    console.log(price);
+    // pause();
+});*/

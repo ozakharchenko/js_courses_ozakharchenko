@@ -1,5 +1,3 @@
-const myAccount = require("../pages/myAccount");
-const assert = require('assert');
 
 let user = {
     firstName: 'Oleg',
@@ -27,58 +25,35 @@ authPage.fillRegistrationEmailField(Date.now() + '@test.com');
 authPage.clickCreateAccount();
 createAccountPage.fillNewAccountFields(user);
 createAccountPage.clickRegister();
-I.see('MY ACCOUNT');*/
+I.see('MY ACCOUNT');
+});*/
 
 
 Scenario('buy product', async ({ I, homePage, authPage, myAccountPage, productPage, cartPage }) => {
     homePage.clickSignIn();
     authPage.login();
-    myAccountPage.myAccountField();
+    myAccountPage.getMyAccountField();
     I.amOnPage('http://automationpractice.com/index.php?id_product=2&controller=product');
     let productPrice = await productPage.getProductPrice();
     console.log(productPrice);
-    let numberProductPrice = productPrice.slice(1);
     productPage.clickAddToCart();
     let shippingPrice = await cartPage.getShippingPrice();
     console.log(shippingPrice);
-    let numberShippingPrice = shippingPrice.slice(1);
-    numberProductPrice = Number(numberProductPrice);
-    numberShippingPrice = Number(numberShippingPrice);
-    let numberTotalPrice = (numberProductPrice + numberShippingPrice);
-    numberTotalPrice = Number(numberTotalPrice);
+    numberTotalPrice = (productPrice + shippingPrice);
     console.log(numberTotalPrice);
     let totalAmount = await cartPage.getTotalAmount();
-    let numberTotalAmount = totalAmount.slice(1);
-    numberTotalAmount = Number(numberTotalAmount);
-    console.log(numberTotalAmount);
+    console.log(totalAmount);
+    I.assertEqual(numberTotalPrice, totalAmount, 'Prices are not in match');
     cartPage.proceedToCheckout();
-    I.assertEqual(numberTotalPrice, numberTotalAmount, 'Prices are not in match');
+    let orderReference = await I.grabTextFromAll("//div[@class='box']");
+    console.log(orderReference);
 
 
 
 
 
 
-
-    /*createAccountPage.fillNewAccountFields(user);
-    createAccountPage.clickRegister();
-    I.see('MY ACCOUNT');*/
-
-
-
-
-    /*I.click('Sign In');
-    I.click ({xpath:"//div[@class='header_user_info']/a"});
-    // pause();
-    I.waitForVisible ({xpath:"//input[@id='email_create']"});
-    I.fillField({xpath:"//input[@id='email_create']"}, '24082022@test.com')*/
 });
 
-/*Scenario('grab', async ({ I }) => {
-    I.amOnPage('http://automationpractice.com/index.php?id_product=1&controller=product');
-    let price = await I.grabTextFrom ({xpath:"//span[@id='our_price_display']"});
-    console.log(price);
-    // pause();
-});*/
 
 
