@@ -5,6 +5,7 @@ const { I } = inject();
 module.exports = {
   productPrice: { xpath: "//span[@id='our_price_display']" },
   addToCartButton: { xpath: "//button[@name='Submit']" },
+  textAddToCart: ('Product successfully added to your shopping cart'),
 
 
 
@@ -18,12 +19,8 @@ module.exports = {
 
   clickAddToCart() {
     I.click(this.addToCartButton);
-    I.waitForText('Product successfully added to your shopping cart');
-    I.see('Product successfully added to your shopping cart');
+    I.waitForText(this.textAddToCart);
+    I.see(this.textAddToCart);
   },
 
 }
-
-// function extractCurrencyValue(numberProductPrice) {
-  // return +numberProductPrice.slice(1);
-  // console.log(numberProductPrice);
