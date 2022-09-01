@@ -9,7 +9,17 @@ module.exports = {
   confirmMyOrderButton: { xpath: "//p[@class='cart_navigation clearfix']//button[@type='submit']" },
   shippingPrice: { xpath: "//span[@class='ajax_cart_shipping_cost']" },
   totalAmount: { xpath: "//span[@class='ajax_block_cart_total']" },
-  // amountPrice: { xpath: "//span[@class='price']" },
+  orderReference: { xpath: "//div[@class='box']" },
+  textShopSummary: ('SHOPPING-CART SUMMARY'),
+  textAddresses: ('ADDRESSES'),
+  textShipping: ('SHIPPING'),
+  textChoosePayMethod: ('PLEASE CHOOSE YOUR PAYMENT METHOD'),
+  textOrderSummary: ('ORDER SUMMARY'),
+  textOrderConfirm: ('ORDER CONFIRMATION'),
+
+
+
+
 
 
 
@@ -28,34 +38,23 @@ module.exports = {
 
   },
 
-  /*async getAmountPrice() {
-    return await I.grabTextFrom(this.amountPrice)
-    let amountPrice = await cartPage.getAmountPrice();
-    console.log(amountPrice);
-    let numberAmountPrice = amountPrice.slice(1);
-    console.log(numberAmountPrice);
-    numberAmountPrice = Number(numberAmountPrice);
-    console.log(numberAmountPrice);
-
-  },*/
-
 
   clickProceedToCheckout() {
     I.click(this.proceedToCheckoutButton);
-    I.waitForText('SHOPPING-CART SUMMARY');
-    I.see('SHOPPING-CART SUMMARY');
+    I.waitForText(this.textShopSummary);
+    I.see(this.textShopSummary);
   },
 
   clickSummaryProceedToCheckout() {
     I.click(this.summaryProceedToCheckoutButton);
-    I.waitForText('ADDRESSES');
-    I.see('ADDRESSES');
+    I.waitForText(this.textAddresses);
+    I.see(this.textAddresses);
   },
 
   clickAddressesProceedToCheckout() {
     I.click(this.addressesProceedToCheckoutButton);
-    I.waitForText('SHIPPING');
-    I.see('SHIPPING');
+    I.waitForText(this.textShipping);
+    I.see(this.textShipping);
   },
 
   checkAgreeTerms() {
@@ -64,20 +63,20 @@ module.exports = {
 
   clickShippingProceedToCheckout() {
     I.click(this.shippingProceedToCheckoutButton);
-    I.waitForText('PLEASE CHOOSE YOUR PAYMENT METHOD');
-    I.see('PLEASE CHOOSE YOUR PAYMENT METHOD');
+    I.waitForText(this.textChoosePayMethod);
+    I.see(this.textChoosePayMethod);
   },
 
   clickPayByBankwire() {
     I.click(this.payByBankwireButton);
-    I.waitForText('ORDER SUMMARY');
-    I.see('ORDER SUMMARY');
+    I.waitForText(this.textOrderSummary);
+    I.see(this.textOrderSummary);
   },
 
   clickConfirmMyOrder() {
     I.click(this.confirmMyOrderButton);
-    I.waitForText('ORDER CONFIRMATION');
-    I.see('ORDER CONFIRMATION');
+    I.waitForText(this.textOrderConfirm);
+    I.see(this.textOrderConfirm);
   },
 
 
@@ -90,9 +89,16 @@ module.exports = {
     this.clickPayByBankwire();
     this.clickConfirmMyOrder();
 
+  },
+
+  async getReferenceOrder() {
+    let orderReference = await I.grabTextFromAll(this.orderReference);
+    let numOrderRef = orderReference.join();
+    let orderRefNum = numOrderRef.search("order reference")
+    let numberOrderRef = numOrderRef.slice(orderRefNum + 15, orderRefNum + 25);
+    return numberOrderRef;
+
   }
-
-
 
 
 
