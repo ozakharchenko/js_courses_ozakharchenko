@@ -18,33 +18,20 @@ Before(({ I }) => {
     I.openStore();
 });
 
-Scenario('custom helpers', async ({ I, homePage, authPage, createAccountPage }) => {
-    I.openStoreFromHelper();
-    console.log(await I.getRandomEmail());
-    console.log(await I.getRandomPassword(10000, 99999999));
-    I.amOnPage('http://automationpractice.com/index.php?id_product=2&controller=product');
-    const result = await tryToHelper.checkElementIsVisible({ xpath: "//button[@name='Submit']" });
-    console.log(result);
-    if (result) {
-        I.click({ xpath: "//button[@name='Submit']" });
-    } else {
-        console.error('Add to cart is not available');
-    
-    }
 
-/*Scenario('create account', async ({ I, homePage, authPage, createAccountPage }) => {
-homePage.clickSignIn();
-authPage.fillRegistrationEmailField(Date.now() + '@test.com');
-authPage.clickCreateAccount();
-createAccountPage.fillNewAccountFields(user);
-createAccountPage.clickRegister();
-I.see('MY ACCOUNT');
-});*/
+Scenario('create account', ({ I, homePage, authPage, createAccountPage }) => {
+    homePage.clickSignIn();
+    authPage.fillRegistrationEmailField(Date.now() + '@test.com');
+    authPage.clickCreateAccount();
+    createAccountPage.fillNewAccountFields(user);
+    createAccountPage.clickRegister();
+    I.see('MY ACCOUNT');
+});
 
 
 /*Scenario('buy product', async ({ I, homePage, authPage, myAccountPage, productPage, cartPage }) => {
     homePage.clickSignIn();
-    authPage.login();
+    authPage.login('test1111111@test.com', '12345');
     myAccountPage.getMyAccountField();
     I.amOnPage('http://automationpractice.com/index.php?id_product=2&controller=product');
     let productPrice = await productPage.getProductPrice();
@@ -58,15 +45,11 @@ I.see('MY ACCOUNT');
     console.log(totalAmount);
     I.assertEqual(numberTotalPrice, totalAmount, 'Prices are not in match');
     cartPage.proceedToCheckout();
-    let orderReference = await I.grabTextFromAll("//div[@class='box']");
-    console.log(orderReference);*/
-
-
-
+    let orderReference = await cartPage.getReferenceOrder();
+    console.log(orderReference);
 
 
 
 });
 
-
-
+*/

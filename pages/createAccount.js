@@ -13,7 +13,6 @@ module.exports = {
   mobilePhoneInput: {xpath:"//input[@id='phone_mobile']"},
   registerButton: {xpath:"//button[@id='submitAccount']"},
 
-  // titleInput: ({xpath:"//input[@name='id_gender']"}),
 
   fillNewAccountFields(user) {
     I.waitForVisible(this.firstNameInput);
@@ -40,10 +39,3 @@ module.exports = {
   }
 
   // insert your locators and methods here
-
-/*Scenario('grab', async ({ I }) => {
-    I.amOnPage('http://automationpractice.com/index.php?id_product=1&controller=product');
-    let price = await I.grabTextFrom ({xpath:"//span[@id='our_price_display']"});
-    console.log(price);
-    // pause();
-});*/

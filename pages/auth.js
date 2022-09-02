@@ -29,11 +29,11 @@ module.exports = {
   },
 
   fillEmail(email) {
-    I.fillField(this.emailInput, 'test1111111@test.com');
+    I.fillField(this.emailInput, email);
   },
 
   fillPassword(password) {
-    I.fillField(this.passwordInput, '12345');
+    I.fillField(this.passwordInput, password);
   },
 
   clickSingIn() {
