@@ -1,0 +1,5 @@
+http://automationpractice.com/index.php?id_product=3&controller=product
+http://automationpractice.com/index.php?id_product=4&controller=product
+http://automationpractice.com/index.php?id_product=5&controller=product
+
+

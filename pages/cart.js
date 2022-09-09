@@ -10,6 +10,7 @@ module.exports = {
   shippingPrice: { xpath: "//span[@class='ajax_cart_shipping_cost']" },
   totalAmount: { xpath: "//span[@class='ajax_block_cart_total']" },
   orderReference: { xpath: "//div[@class='box']" },
+  confirmAccount: { xpath: "//div[@class='box']//span" },
   textShopSummary: ('SHOPPING-CART SUMMARY'),
   textAddresses: ('ADDRESSES'),
   textShipping: ('SHIPPING'),
@@ -98,7 +99,14 @@ module.exports = {
     let numberOrderRef = numOrderRef.slice(orderRefNum + 15, orderRefNum + 25);
     return numberOrderRef;
 
-  }
+  },
+
+
+
+
+
+
+
 
 
 

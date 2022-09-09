@@ -21,7 +21,19 @@ exports.config = {
     },
     "ChaiWrapper": {
       require: "codeceptjs-chai"
-    }
+    },
+    HelpersTest: {
+      require: './helpers/helpersTest.js',
+    },
+    REST: {
+      defaultHeaders: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    },
+    JSONResponse: {},
+    FileSystem: {
+    },
   },
   include: {
     I: './steps_file.js',
@@ -31,6 +43,7 @@ exports.config = {
     myAccountPage: './pages/myAccount.js',
     productPage: './pages/product.js',
     cartPage: './pages/cart.js',
+    tryToHelper: './helpers/tryToHelper.js',
   },
   name: 'js_courses_ozakharchenko'
 }
